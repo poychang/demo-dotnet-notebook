@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net5.0</TargetFramework>
+        <IncludeBuildOutput>true</IncludeBuildOutput>
+        <IsPackable>true</IsPackable>
+        <PackageDescription>Load .env file in dotnet-interactive</PackageDescription>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="dotenv.net" Version="3.1.0" />
+        <PackageReference Include="microsoft.dotnet.interactive" Version="1.0.0-beta.21404.3" />
+        <PackageReference Include="microsoft.dotnet.interactive.csharp" Version="1.0.0-beta.21404.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="bin\**" />
+        <EmbeddedResource Remove="bin\**" />
+        <None Remove="bin\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="$(OutputPath)/LoadEnvFileExtension.dll" Pack="true" PackagePath="interactive-extensions/dotnet" />
+    </ItemGroup>
+
+</Project>
